@@ -1,0 +1,39 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div id="wrapper">
+            <div id="headerwrap">
+                <div id="header">
+                    <p>Trampa</p>
+                    @*@partials.login()*@
+                    <div class="cleaner">&nbsp;</div>
+                </div>
+            </div>
+            <div id="navigationwrap">
+                <div id="navigation">
+                    <p>This is the Menu</p>
+                </div>
+            </div>
+            <div id="contentliquid"><div id="contentwrap">
+                <div id="content">
+                    @content
+                </div>
+            </div></div>
+            <div id="footerwrap">
+                <div id="footer">
+                    <small>&copy; Trampa</small>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

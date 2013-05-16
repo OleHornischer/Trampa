@@ -1,0 +1,29 @@
+@(items: List[Item], itemForm: Form[Item])
+
+@import helper._
+
+@layout("All items") {
+    
+    <h1>@items.size item(s)</h1>
+
+    <ul>
+        @items.map { item =>
+            <li>
+                <h3>@item.title</h3>
+                <p>@item.description</p>
+                @form(routes.ItemController.delete(item.id)) {
+                    <input type="submit" value="Delete" />
+                }
+            </li>
+        }
+    </ul>
+
+    <h2>Create a new item</h2>
+    @form(routes.ItemController.create) {
+        @inputText(itemForm("title"))
+        @inputText(itemForm("description"))
+        @inputText(itemForm("price"))
+
+        <input type="submit" value="Create" />
+    }
+}
