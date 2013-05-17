@@ -5,7 +5,7 @@
 CREATE TABLE item (
     id integer NOT NULL AUTO_INCREMENT,
     title varchar(255),
-    description varchar(255),
+    description text,
     price integer,
     PRIMARY KEY (id)
 );

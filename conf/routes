@@ -34,6 +34,12 @@ GET     /not-authorized             securesocial.controllers.ProviderController.
 
 # Items
 GET     /items                      controllers.ItemController.all
-POST    /items                      controllers.ItemController.create
+GET     /items/:id/details          controllers.ItemController.details(id: Long)
+# Edit item
+GET     /items/:id/edit             controllers.ItemController.edit(id: Long)
+POST    /items/:id/edit             controllers.ItemController.handleEdit(id: Long)
+# Create new item
+GET     /items/create               controllers.ItemController.create
+POST    /items/create               controllers.ItemController.handleCreate
 POST    /items/:id/delete           controllers.ItemController.delete(id: Long)
 

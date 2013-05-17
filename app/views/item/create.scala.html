@@ -1,0 +1,19 @@
+@(itemForm: Form[Item])
+
+@import helper._
+
+@layout("Create item") {
+
+    <div class="grid_12">
+        <div class="box">
+            <h2>Create a new item</h2>
+            @form(routes.ItemController.handleCreate) {
+                @inputText(itemForm("title"))
+                @textarea(field = itemForm("description"), args = 'rows -> 3, 'cols -> 50)
+                @inputText(itemForm("price"))
+
+                <input type="submit" value="Create" />
+            }
+        </div>
+    </div>
+}

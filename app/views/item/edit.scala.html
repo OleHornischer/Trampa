@@ -1,0 +1,19 @@
+@(id: Long, itemForm: Form[Item])
+
+@import helper._
+
+@layout("Edit item") {
+
+    <div class="grid_12">
+        <div class="box">
+            <h2>Item details</h2>
+            @form(action = routes.ItemController.handleEdit(id)) {
+                @inputText(itemForm("title"))
+                @textarea(field = itemForm("description"), args = 'rows -> 3, 'cols -> 50)
+                @inputText(itemForm("price"))
+
+                <input type="submit" value="Save" />
+            }
+        </div>
+    </div>
+}

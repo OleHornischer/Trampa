@@ -29,6 +29,10 @@ object ItemDAO {
     SQL("select * from item").as(item *)
   }
 
+  def byId(id: Long) : Item = DB.withConnection { implicit c =>
+    SQL("select * from item where id = {id}").on("id" -> id).single(item)
+  }
+
   def create(title: String, description: String, price: Int) : Option[Long] = {
     var id : Option[Long] = null
 
@@ -37,6 +41,12 @@ object ItemDAO {
         "title" -> title, "description" -> description, "price" -> price).executeInsert()
     }
     id
+  }
+
+  def update(id: Long, item: Item) = DB.withConnection { implicit c =>
+    SQL("update item set title={title}, description={description}, price={price} where id={id}")
+      .on("id" -> id, "title" -> item.title, "description" -> item.description, "price" -> item.price)
+      .executeUpdate()
   }
 
   def delete(id: Long) {

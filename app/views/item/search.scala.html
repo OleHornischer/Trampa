@@ -1,0 +1,32 @@
+@(items: List[Item])
+
+@import helper._
+
+@layout("Search result") {
+
+
+   @for(pos <- 0 to items.size-1){
+        @if(pos % 3 == 0) {
+            <div class="grid_12">&nbsp;</div>
+        }
+        <div class="grid_4">
+            <div class="box">
+                <h2>@items(pos).title</h2>
+                <div class="block">
+                    <p>Description:@items(pos).description</p>
+                    <p>
+                        @form(routes.ItemController.details(items(pos).id)) {
+                            <input type="submit" value="Details" />
+                        }
+                        <span>Price: @items(pos).price</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="grid_12">
+        <p><small>Found @items.size items.</small></p>
+    </div>
+
+}

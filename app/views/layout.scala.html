@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Fluid 960 Grid System | 12-column Grid</title>
+    <title>@{ "Trampa - " + title}</title>
     <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/reset.css")" media="screen" />
     <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/text.css")" media="screen" />
     <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/grid.css")" media="screen" />
@@ -20,32 +20,36 @@
 <div class="container_12">
     <div class="grid_12">
         <h1 id="branding">
-            <a href="#">Fluid 960 Grid System</a>
+            <a href="#">Trampa</a>
         </h1>
     </div>
     <div class="clear"></div>
     <div class="grid_12">
         <ul class="nav main">
             <li>
-                <a href="#">Fluid 12-column</a>
+                <a href="#">Menu 1</a>
                 <ul>
                     <li>
-                        <a href="#">MooTools</a>
+                        <a href="#">Item 1</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">Fluid 16-column</a>
+                <a href="#">Menu 2</a>
                 <ul>
                     <li>
-                        <a href="#">MooTools</a>
+                        <a href="#">Item 1</a>
                     </li>
                 </ul>
             </li>
             <li class="secondary">
-                <a href="http://960.gs/" title="960.gs | A CSS grid system developed by Nathan Smith">The 960 Grid System</a>
+                <a href="#" title="...">Item right</a>
             </li>
         </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_12">
+        <h2 id="page-heading">@title</h2>
     </div>
     <div class="clear"></div>
     <div class="grid_12" id="content">

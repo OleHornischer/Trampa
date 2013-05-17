@@ -1,0 +1,32 @@
+@(item: Item)
+
+@import helper._
+
+@layout(item.title) {
+
+        <div class="grid_12">
+            <div class="box articles">
+                <h2>Item details</h2>
+                <div class="block">
+                    <div class="first article">
+                        <h3>@item.title</h3>
+                        <h4><i>Owner user name</i></h4>
+                        <p class="meta">Price: @item.price</p>
+                        <img src="@routes.Assets.at("images/photo_60x60.jpg")" width="60" height="60" alt="photo" />
+                        <p>
+                            @item.description
+                        </p>
+                        <p>
+                            @form(routes.ItemController.edit(item.id)) {
+                                <input type="submit" value="Edit" />
+                            }
+                            @form(routes.ItemController.delete(item.id)) {
+                                <input type="submit" value="Delete" />
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+}

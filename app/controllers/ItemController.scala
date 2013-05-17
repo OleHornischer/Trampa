@@ -27,21 +27,45 @@ object ItemController extends Controller with securesocial.core.SecureSocial {
   )
 
   def all = Action {
-    Ok(views.html.index(ItemDAO.all(), itemForm))
+    Ok(views.html.item.search(ItemDAO.all()))
+  }
+
+  def details(id: Long) = Action { implicit request =>
+    Ok(views.html.item.details(ItemDAO.byId(id)))
   }
 
   def create = Action { implicit request =>
+    Ok(views.html.item.create(itemForm))
+  }
+
+  def handleCreate = Action { implicit request =>
     itemForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.index(ItemDAO.all(), errors)),
+      errors => BadRequest(views.html.item.create(errors)),
       item => {
-        ItemDAO.create(item.title, item.description, item.price)
-        Redirect(routes.ItemController.all)
+        val id = ItemDAO.create(item.title, item.description, item.price).get
+        Redirect(routes.ItemController.details(id))
+      }
+    )
+  }
+
+  def edit(id: Long) = Action { implicit request =>
+    val item = ItemDAO.byId(id)
+    Ok(views.html.item.edit(id, itemForm.fill(item)))
+  }
+
+  def handleEdit(id: Long) = Action { implicit request =>
+    itemForm.bindFromRequest.fold(
+      errors => BadRequest(views.html.item.create(errors)),
+      item => {
+        ItemDAO.update(id, item)
+        Redirect(routes.ItemController.details(id))
       }
     )
   }
 
   def delete(id: Long) = Action { implicit  request =>
     ItemDAO.delete(id)
+    // TODO: redirect to user home, when exists
     Redirect(routes.ItemController.all)
   }
 }
