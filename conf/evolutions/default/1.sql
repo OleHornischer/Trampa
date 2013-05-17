@@ -2,17 +2,16 @@
 
 # --- !Ups
 
-CREATE SEQUENCE item_id_seq;
 CREATE TABLE item (
-    id integer NOT NULL DEFAULT nextval('item_id_seq'),
+    id integer NOT NULL AUTO_INCREMENT,
     title varchar(255),
-    description varchar,
-    price integer
+    description varchar(255),
+    price integer,
+    PRIMARY KEY (id)
 );
 
-CREATE SEQUENCE user_id_seq;
 CREATE TABLE user (
-    id integer NOT NULL DEFAULT nextval('user_id_seq'),
+    id integer NOT NULL AUTO_INCREMENT,
     firstName varchar(255),
     lastName varchar(255),
     userName varchar(255),
@@ -22,7 +21,8 @@ CREATE TABLE user (
     houseNumber varchar(255),
     postcode varchar(255),
     countryCode varchar(255),
-    balance integer
+    balance integer,
+    PRIMARY KEY (id)
 );
 
 INSERT INTO user(firstName, lastName, userName, email, password, street, houseNumber, postcode, countryCode, balance)
@@ -31,6 +31,4 @@ VALUES ('Ole', 'Hornischer', 'ole', 'ole@hornischer.net', '',  'Hasselbrookstr.'
 # --- !Downs
 
 DROP TABLE item;
-DROP SEQUENCE item_id_seq;
 DROP TABLE user;
-DROP SEQUENCE user_id_seq;

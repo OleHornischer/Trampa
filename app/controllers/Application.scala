@@ -13,5 +13,9 @@ object Application extends Controller {
     Ok(views.html.help("Play 2.0 Help"))
   }
 
+  def layout =  Action {
+    Ok(views.html.newlayout())
+  }
+
   def authenticate = TODO
 }

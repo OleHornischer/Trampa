@@ -11,7 +11,8 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     jdbc,
     anorm,
-    "securesocial" %% "securesocial" % "master-SNAPSHOT"
+    "securesocial" %% "securesocial" % "master-SNAPSHOT" ,
+    "mysql" % "mysql-connector-java" % "5.1.18"
   )
 
 

@@ -5,6 +5,7 @@ import dataaccess.ItemDAO
 import play.api.data.Form
 import play.api.data.Forms._
 import models.Item
+import securesocial.core.{Identity, Authorization}
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +14,7 @@ import models.Item
  * Time: 17:33
  * To change this template use File | Settings | File Templates.
  */
-object ItemController extends Controller {
+object ItemController extends Controller with securesocial.core.SecureSocial {
 
 
   val itemForm = Form(
