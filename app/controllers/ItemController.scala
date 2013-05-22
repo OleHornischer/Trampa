@@ -34,7 +34,7 @@ object ItemController extends Controller with securesocial.core.SecureSocial {
     Ok(views.html.item.details(ItemDAO.byId(id)))
   }
 
-  def create = Action { implicit request =>
+  def create = SecuredAction { implicit request =>
     Ok(views.html.item.create(itemForm))
   }
 
